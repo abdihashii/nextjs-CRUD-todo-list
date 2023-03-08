@@ -18,3 +18,9 @@ In this practice repo, I used React's [createContext](https://beta.reactjs.org/r
 - [Nextjs](https://nextjs.org/learn/basics/create-nextjs-app)
 - [Tailwind css](https://tailwindcss.com/)
 - [Tailwind + prettier](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
+
+### To run:
+
+1. Switch to the nextjs directory `cd crud-todo-app`
+2. Install dependencies `npm i`
+3. Run the local server `npm run dev`
