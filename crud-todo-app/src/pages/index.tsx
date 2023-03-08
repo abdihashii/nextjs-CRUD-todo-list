@@ -23,13 +23,13 @@ export default function Home() {
         <title>CRUD TODO APP | Next practice</title>
       </Head>
       <main className={`${inter.className} flex h-screen`}>
-        <div className="bg-white sm:w-6/12 rounded-2xl p-8 flex gap-10 flex-col m-auto">
-          <h1 className="font-semibold text-4xl text-center">CRUD TODO APP</h1>
+        <div className="m-auto flex flex-col gap-10 rounded-2xl bg-white p-8 sm:w-6/12">
+          <h1 className="text-center text-4xl font-semibold">CRUD TODO APP</h1>
           <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-            <section className="flex flex-row mx-auto w-10/12 mb-5">
+            <section className="mx-auto mb-5 flex w-10/12 flex-row">
               <input
                 autoFocus={true}
-                className="text-xl p-2 rounded-lg border-2 border-gray-300 w-10/12 rounded-tr-none rounded-br-none border-r-0"
+                className="w-10/12 rounded-lg rounded-tr-none rounded-br-none border-2 border-r-0 border-gray-300 p-2 text-xl"
                 type="text"
                 placeholder="Enter todo item here"
                 value={newTodoItem}
@@ -38,7 +38,7 @@ export default function Home() {
                 }}
               />
               <button
-                className="text-xl p-2 rounded-lg bg-blue-500 text-white w-2/12 rounded-tl-none rounded-bl-none"
+                className="w-2/12 rounded-lg rounded-tl-none rounded-bl-none bg-blue-500 p-2 text-xl text-white"
                 onClick={() =>
                   dispatch({
                     type: 'ADD_TODO',
