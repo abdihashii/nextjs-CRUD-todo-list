@@ -21,6 +21,11 @@ In this practice repo, I used React's [createContext](https://beta.reactjs.org/r
 
 ### To run:
 
-1. Switch to the nextjs directory `cd crud-todo-app`
-2. Install dependencies `npm i`
-3. Run the local server `npm run dev`
+1. Switch to the nextjs directory
+   `cd crud-todo-app`
+
+2. Install dependencies
+   `npm i`
+
+3. Run the local server
+   `npm run dev`
