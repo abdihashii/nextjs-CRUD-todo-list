@@ -1,22 +1,5 @@
 import { createContext, useReducer } from 'react';
-
-export type TodoItem = {
-  id: number;
-  todoItem: string;
-  isEditable: boolean;
-};
-
-export type TodoItems = TodoItem[];
-
-type ReducerAction = {
-  type: string;
-  payload: TodoItem;
-};
-
-interface ContextType {
-  todoItems: TodoItems;
-  dispatch: React.Dispatch<ReducerAction>;
-}
+import { TodoItems, ReducerAction } from '@/types/';
 
 const todoListReducer = (todoItems: TodoItems, action: ReducerAction) => {
   switch (action.type) {
@@ -70,7 +53,10 @@ const todoListReducer = (todoItems: TodoItems, action: ReducerAction) => {
   }
 };
 
-export const TodoListContext = createContext<ContextType | null>(null);
+export const TodoListContext = createContext({
+  todoItems: [] as TodoItems,
+  dispatch: (action: ReducerAction) => {},
+});
 
 const TodoListContextProvider = ({ children }: any) => {
   const [todoItems, dispatch] = useReducer(todoListReducer, []);
