@@ -29,7 +29,7 @@ export default function Home() {
             <section className="mx-auto mb-5 flex w-10/12 flex-row">
               <input
                 autoFocus={true}
-                className="w-10/12 rounded-lg rounded-tr-none rounded-br-none border-2 border-r-0 border-gray-300 p-2 text-xl"
+                className="transition duration-100 hover:border-gray-400 focus:outline-none w-10/12 rounded-lg rounded-tr-none rounded-br-none border-2 border-r-0 border-gray-300 p-2 text-xl"
                 type="text"
                 placeholder="Enter todo item here"
                 value={newTodoItem}
@@ -38,7 +38,7 @@ export default function Home() {
                 }}
               />
               <button
-                className="w-2/12 rounded-lg rounded-tl-none rounded-bl-none bg-blue-500 p-2 text-xl text-white"
+                className="hover:bg-blue-600 transition duration-100 w-2/12 rounded-lg rounded-tl-none rounded-bl-none bg-blue-500 p-2 text-xl text-white"
                 onClick={() =>
                   dispatch({
                     type: 'ADD_TODO',
