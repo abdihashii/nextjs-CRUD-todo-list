@@ -41,9 +41,19 @@ const todoListReducer = (todoItems: TodoItems, action: ReducerAction) => {
       return newTodoItems;
     }
 
+    case 'MOVE_TODO': {
+      const { sourceIndex, destinationIndex } = action.payload;
+      const newTodoItems = [...todoItems];
+
+      const [removed] = newTodoItems.splice(sourceIndex!, 1);
+      newTodoItems.splice(destinationIndex!, 0, removed);
+
+      return newTodoItems;
+    }
+
     case 'DELETE_TODO': {
       const newTodoItems = todoItems.filter(
-        (todoItem) => todoItem.id !== action.payload.id,
+        (todoItem) => todoItem.id !== action.payload.id
       );
       return newTodoItems;
     }
