@@ -5,6 +5,8 @@ import { TodoListContext } from '@/context/todoListContext';
 import { v4 as uuidv4 } from 'uuid';
 import TodoListItem from '@/components/todoListItem';
 import { TodoItem } from '@/types/';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import type { DropResult } from 'react-beautiful-dnd';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,6 +17,31 @@ export default function Home() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setNewTodoItem('');
+  };
+
+  const onDragEnd = (result: DropResult) => {
+    const { destination, source, draggableId } = result;
+
+    // If the item is dropped outside the list
+    if (!destination) {
+      return;
+    }
+
+    // If the item is dropped in the same place
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    dispatch({
+      type: 'MOVE_TODO',
+      payload: {
+        sourceIndex: source.index,
+        destinationIndex: destination.index,
+      },
+    });
   };
 
   return (
@@ -54,11 +81,22 @@ export default function Home() {
               </button>
             </section>
 
-            <section>
-              {todoItems.map((todoItem: TodoItem) => (
-                <TodoListItem {...{ todoItem, dispatch }} />
-              ))}
-            </section>
+            <DragDropContext onDragEnd={onDragEnd}>
+              <Droppable droppableId="todoItems">
+                {(provided) => (
+                  <section
+                    className="flex flex-col p-4"
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                  >
+                    {todoItems.map((todoItem: TodoItem, index) => (
+                      <TodoListItem {...{ index, todoItem, dispatch }} />
+                    ))}
+                    {provided.placeholder}
+                  </section>
+                )}
+              </Droppable>
+            </DragDropContext>
           </form>
         </div>
       </main>

@@ -1,7 +1,9 @@
 type TodoItem = {
-  id: string;
-  todoItem: string;
+  id?: string;
+  todoItem?: string;
   isEditable?: boolean;
+  destinationIndex?: number;
+  sourceIndex?: number;
 };
 
 type TodoItems = TodoItem[];
@@ -12,6 +14,7 @@ type ReducerAction = {
 };
 
 type TodoItemProps = {
+  index: number;
   todoItem: TodoItem;
   dispatch: React.Dispatch<ReducerAction>;
 };
