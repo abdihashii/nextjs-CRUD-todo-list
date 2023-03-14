@@ -5,7 +5,6 @@ const todoListReducer = (todoItems: TodoItems, action: ReducerAction) => {
   switch (action.type) {
     case 'ADD_TODO': {
       const newTodoItem = { ...action.payload };
-      console.log(newTodoItem);
       return [...todoItems, newTodoItem];
     }
 
@@ -53,7 +52,7 @@ const todoListReducer = (todoItems: TodoItems, action: ReducerAction) => {
 
     case 'DELETE_TODO': {
       const newTodoItems = todoItems.filter(
-        (todoItem) => todoItem.id !== action.payload.id
+        (todoItem) => todoItem.id !== action.payload.id,
       );
       return newTodoItems;
     }
