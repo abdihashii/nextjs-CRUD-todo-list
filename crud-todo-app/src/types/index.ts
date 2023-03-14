@@ -1,9 +1,18 @@
 type TodoItem = {
   id?: string;
-  todoItem?: string;
+  title?: string;
   isEditable?: boolean;
   destinationIndex?: number;
   sourceIndex?: number;
+};
+
+type TodoStore = {
+  todoItems: TodoItem[];
+  addTodo: (todoItem: TodoItem) => void;
+  editTodo: (todoItem: TodoItem) => void;
+  saveTodo: (todoItem: TodoItem, newTitle: string) => void;
+  moveTodo: (sourceIndex: number, destinationIndex: number) => void;
+  deleteTodo: (index: number) => void;
 };
 
 type TodoItems = TodoItem[];
@@ -16,7 +25,6 @@ type ReducerAction = {
 type TodoItemProps = {
   index: number;
   todoItem: TodoItem;
-  dispatch: React.Dispatch<ReducerAction>;
 };
 
-export type { TodoItem, TodoItems, ReducerAction, TodoItemProps };
+export type { TodoItem, TodoStore, TodoItems, ReducerAction, TodoItemProps };
