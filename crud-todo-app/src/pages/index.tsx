@@ -82,7 +82,7 @@ export default function Home() {
                   ref={provided.innerRef}
                 >
                   {state.todoItems.map((todoItem: TodoItem, index) => (
-                    <TodoListItem {...{ index, todoItem }} />
+                    <TodoListItem key={todoItem.id} {...{ index, todoItem }} />
                   ))}
 
                   {provided.placeholder}
